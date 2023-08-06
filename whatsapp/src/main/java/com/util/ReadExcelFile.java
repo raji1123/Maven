@@ -53,6 +53,18 @@ public class ReadExcelFile {
 		
 		
 		
+		int Row =sheet.getLastRowNum();
+		int col=sheet.getRow(0).getLastCellNum();{
+		for(int r=0;r<Row;r++) {
+			XSSFRow row=sheet.getRow(r);
+			
+			for(int c=0;c<col;c++) {
+				
+			XSSFCell Col=row.getCell(c);
+			 System.out.println(c);
+			}
+		}
+		
 		
 		/*for(int i=1;i<=lastrow;i++) {
 			
