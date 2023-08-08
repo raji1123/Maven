@@ -26,11 +26,11 @@ public class Snapdealloginverfication {
 				
 		driver.findElement(By.xpath("//input[@id='userName']")).sendKeys("rajilakshmi1112223@gmail.com");
 		driver.findElement(By.xpath("//button[@id='checkUser']")).click();
-		//driver.switchTo().frame(driver.findElement(By.id("loginIframe")));
+		
 		
 		driver.findElement(By.xpath("(//input[@placeholder='Code'])[2]"));
 	
-		Thread.sleep(20000);
+		Thread.sleep(5000);
 		driver.findElement(By.xpath("//button[@id='loginUsingOtp']")).click();
 		System.out.println("user logged in successfully");
 		

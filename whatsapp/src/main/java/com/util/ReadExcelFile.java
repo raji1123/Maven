@@ -65,23 +65,13 @@ public class ReadExcelFile {
 			}
 		}
 		
+	
 		
-		/*for(int i=1;i<=lastrow;i++) {
-			
-			XSSFRow row=sheet.getRow(i);
-			Cell Name=row.getCell(0);
-			
-			Cell Age=row.getCell(1);
-			Cell Email=row.getCell(2);
-		    System.out.println(Name+" "+Age+" "+Email);
-			
-		}*/
+		}}	
 		
 		
 		
-		
-		
-	} catch (Exception e) {
+	catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
