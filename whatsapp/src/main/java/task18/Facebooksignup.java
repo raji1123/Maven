@@ -3,6 +3,7 @@ package task18;
 import java.time.Duration;
 import java.util.List;
 
+import org.apache.hc.core5.util.Asserts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,10 +14,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Facebooksignup {
 	
+	WebDriver driver = null;
+	
 	public void signupfacebook() {
 		
 		WebDriverManager.chromedriver().setup();
-		WebDriver driver=new ChromeDriver();
+		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 		driver.get("https://www.facebook.com/");
@@ -44,6 +47,20 @@ public class Facebooksignup {
 		driver.findElement(By.xpath("//input[@value='2']")).click();
 		driver.findElement(By.xpath("(//button[text()='Sign Up'])[1]")).click();
 		
+		String actual=driver.findElement(By.xpath("//div[@class='x11i5rnm xat24cr x1mh8g0r x1vvkbs xtlvy1s']")).getText();
+		String Excepted="Complete these steps in the next 180 days to make sure that you can use this account.";
+		if(Excepted.equalsIgnoreCase(actual)) {
+			
+			
+			System.out.println("sign up successful");
+		}
+		
+		else {
+			
+			System.out.println("sign up failure");
+		}
+		
+	
 	}
 	
 	
