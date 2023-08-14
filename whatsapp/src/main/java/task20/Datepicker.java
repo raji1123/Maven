@@ -24,20 +24,7 @@ public class Datepicker {
 		driver.get("https://jqueryui.com/datepicker/");
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='demo-frame']")));
 		driver.findElement(By.xpath("//input[@id='datepicker']")).click();
-		String month=null;
-		String orgm="September 2024";
-	    while(true) {
-			
-			month=driver.findElement(By.xpath("//div[@class='ui-datepicker-title']")).getText();
-			
-			if(month.equals(orgm)) {
-				
-				break;
-			}
-			
-			driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-circle-triangle-e']")).click();
-			
-		}
+	
 		
 		
 		List <WebElement> select=driver.findElements(By.xpath("//tbody//tr//td"));
@@ -45,24 +32,21 @@ public class Datepicker {
 		
 		for(WebElement date:select) {
 		
-			
-			//System.out.println(date.getText());
-			
-			
-			
 			if(orgdate.equals(date.getText())) {
-			date.getText()	;
+			
 			date.click();
 			break;
 				
 			}
+
+			
 		}
 		
-		Thread.sleep(2000);
-		String output=driver.findElement(By.xpath("//*[@id='datepicker']")).getText();
+		Thread.sleep(1000);
+		String output=driver.findElement(By.xpath("//input[@id='datepicker']")).getAttribute("value");
 		System.out.println(output);
-		
-		driver.close();
+		driver.quit();
+	
 		
 	}
 

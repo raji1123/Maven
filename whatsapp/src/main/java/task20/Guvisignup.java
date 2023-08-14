@@ -26,7 +26,7 @@ public class Guvisignup {
 		driver.findElement(By.xpath("//input[@id='lastName']")).sendKeys("user");
 		
 		
-		String email1="abi2001@gmail.com";
+		String email1="abi2011@gmail.com";
 		String password="test@2322";
 	    driver.findElement(By.xpath("//input[@id='emailInput']")).sendKeys(email1);
 	
@@ -58,7 +58,7 @@ public class Guvisignup {
 		driver.findElement(By.xpath("//*[@class='nav-link  text-primary text-center px-4']")).click();
 		
 		driver.findElement(By.xpath("//*[@id='login_email']")).sendKeys(email1);
-	   driver.findElement(By.xpath("//*[@id='login_password']")).sendKeys(password);
+	    driver.findElement(By.xpath("//*[@id='login_password']")).sendKeys(password);
 		
 		driver.findElement(By.xpath("//*[@id='login_button']")).click();
 		

@@ -4,13 +4,16 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Q1Windowsandframes {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
 		WebDriverManager.chromedriver().setup();
@@ -22,12 +25,20 @@ public class Q1Windowsandframes {
 		driver.switchTo().frame(("mce_0_ifr"));
 		driver.findElement(By.xpath("//body//p")).clear();
 		driver.findElement(By.xpath("//body//p")).sendKeys("Hello People");
+		Thread.sleep(2000);
+		String actual=driver.findElement(By.xpath("//body//p")).getText();
 		
+		//WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+		//wait.until(ExpectedConditions.alertIsPresent());
 		
+		System.out.println(actual);
+		String expected="Hello People";
 		
+		if(expected.equalsIgnoreCase(actual)) {
+			System.out.println("pass");
+		}
 		
-		
-		//driver.close();
+		driver.close();
 		
 
 	}

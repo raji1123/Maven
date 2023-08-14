@@ -77,15 +77,15 @@ public class SeleniumLocators {
 			
 			 driver.findElement(By.id("passwordInput"));
 				
-				driver.findElement(By.className("form-control"));
+			 driver.findElement(By.className("form-control"));
 				
 				
-				driver.findElement(By.tagName("input"));
+			driver.findElement(By.tagName("input"));
 				
 				
-				driver.findElement(By.cssSelector("#passwordInput"));
+			driver.findElement(By.cssSelector("#passwordInput"));
 				
-				driver.findElement(By.xpath("//input[@id='passwordInput']"));
+			driver.findElement(By.xpath("//input[@id='passwordInput']"));
 		
 		
 		//finding possible x-path for mobile number

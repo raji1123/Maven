@@ -49,6 +49,8 @@ public class Facebooksignup {
 		
 		String actual=driver.findElement(By.xpath("//div[@class='x11i5rnm xat24cr x1mh8g0r x1vvkbs xtlvy1s']")).getText();
 		String Excepted="Complete these steps in the next 180 days to make sure that you can use this account.";
+		
+		
 		if(Excepted.equalsIgnoreCase(actual)) {
 			
 			

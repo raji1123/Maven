@@ -1,6 +1,8 @@
 package task21;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -24,21 +26,27 @@ public class Q2 {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		driver.get("https://the-internet.herokuapp.com/windows");
 		
-		parentwindow=driver.getWindowHandle();
+		
 		driver.findElement(By.linkText("Click Here")).click();
 		
 		Set<String> windows=driver.getWindowHandles();
 		
-		for(String wd:windows) {
+		
+		List<String>window1=new ArrayList(windows);
+		
+		String parent1=window1.get(0);
+		String Childwindow1=window1.get(1);
+		
+		/*for(String wd:windows) {
 			
 			if(!(wd.equals(parentwindow))) {
 				Childwindow=wd;
 			}
-		}
+		}*/
 		
 		
 		//verification for new window twxt present in the page	
-		  driver.switchTo().window(Childwindow);
+		  driver.switchTo().window(Childwindow1);
 		  String Actual=driver.findElement(By.xpath("//h3[normalize-space()='New Window']")).getText();
 		
 			if( Excepted.equalsIgnoreCase(Actual)) {
@@ -52,7 +60,7 @@ public class Q2 {
 			
 			
 			//checking the parent window is active and closing the parent browser
-			driver.switchTo().window(parentwindow);
+			driver.switchTo().window(parent1);
 			
 			String Actual1	=driver.getCurrentUrl();
 			

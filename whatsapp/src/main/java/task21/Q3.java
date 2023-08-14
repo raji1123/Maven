@@ -16,7 +16,8 @@ public class Q3 {
 		driver.get("http://the-internet.herokuapp.com/nested_frames");
 		
 		driver.switchTo().frame("frame-top");
-	   
+	
+		
 	    driver.switchTo().frame("frame-left");
 	    
 	    String Actual=driver.findElement(By.xpath("//body[1]")).getText();
@@ -36,7 +37,7 @@ public class Q3 {
 	   driver.switchTo().frame("frame-middle");
 	    
 	    
-      String Actual1=driver.findElement(By.xpath("//div[@id='content']")).getText();
+        String Actual1=driver.findElement(By.xpath("//div[@id='content']")).getText();
 	    
 	    String Exceptedmid="middle";
 	    
@@ -68,21 +69,25 @@ public class Q3 {
 	  	
 	  	driver.switchTo().frame(btm);
 	  	
-	  	 String Actual3=driver.findElement(By.xpath("//body[1]")).getText();
+	  	String Actual3=driver.findElement(By.xpath("//body[1]")).getText();
 		    
 		    
-         String Exceptedbottom="bottom";
+        String Exceptedbottom="bottom";
 	    
 	    if(Exceptedbottom.equalsIgnoreCase( Actual3))
 	    {
 	      System.out.println("verified bottom frame");
 	      System.out.println(Actual3);
 	    }
-	    Thread.sleep(2000);
-	  String  page= driver.switchTo().defaultContent().getTitle();
-	  	   String Excepted="Frames";
+	    
+	       Thread.sleep(2000);
+	     driver.switchTo().defaultContent();
+	     String flactual=driver.getCurrentUrl();
+	     
+	     
+	  	 String Excepted="http://the-internet.herokuapp.com/nested_frames";
 	   
-	   if(Excepted.equalsIgnoreCase(page))
+	     if(Excepted.equalsIgnoreCase(flactual))
 	    {
 	      
 	      System.out.println("successful");
