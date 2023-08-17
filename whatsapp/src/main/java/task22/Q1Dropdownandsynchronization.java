@@ -29,28 +29,27 @@ public class Q1Dropdownandsynchronization {
 		
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement ele1=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='first_name input mb1']")));
+		WebElement ele1=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='first_name form-control']")));
 		ele1.sendKeys("abc");
 		
 		
 		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement ele2=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='last_name input mb1']")));
+		WebElement ele2=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='last_name form-control']")));
 		ele2.sendKeys("aahh");
 	
 		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement ele3=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='business_name input mb1']")));
+		WebElement ele3=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='business_name form-control']")));
 		ele3.sendKeys("mwta");
-		driver.findElement(By.xpath("//*[@class='business_name input mb1']")).sendKeys("meta");
+		
 		
          WebDriverWait wait3=new   WebDriverWait(driver,Duration.ofSeconds(10));
-	     WebElement ele4=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='email input mb1']")));
+	     WebElement ele4=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='email form-control']")));
 		 ele4.sendKeys("abab@gmail.com");
  
 		
 		
 	     String num1=(driver.findElement(By.xpath("//span[@id='numb1']")).getText());
-	 
-	  	 String num2=driver.findElement(By.xpath("//span[@id='numb2']")).getText();
+	     String num2=driver.findElement(By.xpath("//span[@id='numb2']")).getText();
 	  	  
 	  
 	  	
@@ -58,33 +57,39 @@ public class Q1Dropdownandsynchronization {
 	  	  int org1=Integer.parseInt(num1);
 	  	  int org2=Integer.parseInt(num2);
 	      int r=org1+org2;
-	
 	     	String finalresult=String.valueOf(r);
 	
 		
     
 		driver.findElement(By.xpath("//input[@id='number']")).sendKeys(finalresult);
-		
-		Thread.sleep(2000);
 		driver.findElement(By.xpath("//button[@id='demo']")).click();
 		
 		
 		
+	
+		WebDriverWait waitr=new WebDriverWait(driver,Duration.ofSeconds(10));
+		String Actual=	waitr.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[@class='text-center cw']"))).getText();
 		
-		Thread.sleep(2000);
-		String Actual=driver.findElement(By.xpath("//h2[@class='text-center cw']")).getText();
+		
 		
 		System.out.println(Actual);
 		
-		String Expected="Thankyou!";
+		String Expected="Thank you!";
 		
 		if(Actual.equalsIgnoreCase(Expected)) 
 		{
 			System.out.println("verified");
 		}
+		else {
+			System.out.println("Not verified");
+		}
 		
 		
 	}
+		
+	
+	
+	
 		
 		
 	/*	public static void implicit(WebDriver driver,By loc1, int timeout) {

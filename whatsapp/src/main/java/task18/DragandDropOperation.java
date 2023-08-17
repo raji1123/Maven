@@ -7,10 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class DragandDropOperation {
 
-	
+	WebDriver driver=null;
 	void Jquery() throws InterruptedException {
         WebDriver driver=new EdgeDriver();
 		
@@ -24,39 +27,49 @@ public class DragandDropOperation {
 	    Actions act=new  Actions(driver);
 	    
 	     String Actualtext2= driver.findElement(By.xpath("//*[@class='ui-widget-header ui-droppable']//p")).getText();
-	     System.out.println(Actualtext2);
-	     
-	     
-	      act.dragAndDrop(driver.findElement(By.xpath("//div[@id='draggable']")),driver.findElement(By.xpath("//div[@id='droppable']"))).build().perform();
+	    
+	     act.dragAndDrop(driver.findElement(By.xpath("//div[@id='draggable']")),driver.findElement(By.xpath("//div[@id='droppable']"))).build().perform();
 	   
 	   
 	     Thread.sleep(2000);
-	    String Actualtext= driver.findElement(By.xpath("//*[@class='ui-widget-header ui-droppable ui-state-highlight']")).getText();
+	     
+	     //validation
+	     String Actualtext= driver.findElement(By.xpath("//*[@class='ui-widget-header ui-droppable ui-state-highlight']")).getText();
 	    
-	     String Excepted="Dropped!";
+	      String Excepted="Dropped!";
 	
-	    if(Actualtext.equalsIgnoreCase(Excepted)) {
-		
-		System.out.println("Element is dropped");
-	   }
-	
-	    WebElement Actualtext1= driver.findElement(By.cssSelector("div.ui-state-highlight"));
-	    
-		System.out.println(  Actualtext1.getText());
-	    
-	
+	      Assert.assertEquals(Actualtext, Excepted);
 	   
+	    
+	      // color validation
+		
+		
+		
+		WebElement dropBox = driver.findElement(By.xpath("//div[@id='droppable']"));
+		
+		String cssProp = dropBox.getCssValue("color");
+	
+		
+		
+		Color col = Color.fromString(cssProp);
+	    String Actual=	col.asHex();
+	
+		
+		Assert.assertEquals(Actual, "#777620");
+		
+		driver.close();
+		
 	}
 //
 	
 	
-	
-	
-	public static void main(String[] args) throws InterruptedException {
-		DragandDropOperation s=new DragandDropOperation();
-		s.Jquery();
+	@Test
+	public void test1() throws InterruptedException {
 		
-
+		DragandDropOperation d=new DragandDropOperation();
+		
+		d.Jquery();
+		
 	}
 
 }
