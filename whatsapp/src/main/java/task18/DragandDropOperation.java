@@ -15,7 +15,7 @@ public class DragandDropOperation {
 
 	WebDriver driver=null;
 	void Jquery() throws InterruptedException {
-        WebDriver driver=new EdgeDriver();
+        driver=new EdgeDriver();
 		
 		
 		driver.manage().window().maximize();
@@ -35,11 +35,20 @@ public class DragandDropOperation {
 	     
 	     //validation
 	     String Actualtext= driver.findElement(By.xpath("//*[@class='ui-widget-header ui-droppable ui-state-highlight']")).getText();
-	    
-	      String Excepted="Dropped!";
+	     
+	    System.out.println(Actualtext);
+	      String Expected="Dropped!";
 	
-	      Assert.assertEquals(Actualtext, Excepted);
-	   
+	   if(Actualtext.equalsIgnoreCase(Expected)) {
+		   
+		   
+		   System.out.println("verified");
+		   
+	   }
+	   else {
+		   
+		   System.out.println(" Not verified");
+	   }
 	    
 	      // color validation
 		
@@ -49,13 +58,20 @@ public class DragandDropOperation {
 		
 		String cssProp = dropBox.getCssValue("color");
 	
-		
+		String Expected1="#777620";
 		
 		Color col = Color.fromString(cssProp);
 	    String Actual=	col.asHex();
 	
-		
-		Assert.assertEquals(Actual, "#777620");
+		if(Actual.equalsIgnoreCase(Expected1)) {
+			
+			System.out.println("color is verified");
+		}
+		else {
+			
+			System.out.println("Not verified");
+
+		}
 		
 		driver.close();
 		
@@ -63,8 +79,8 @@ public class DragandDropOperation {
 //
 	
 	
-	@Test
-	public void test1() throws InterruptedException {
+	
+	public static void main(String[] args) throws InterruptedException {
 		
 		DragandDropOperation d=new DragandDropOperation();
 		

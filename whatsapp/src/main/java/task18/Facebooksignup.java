@@ -16,7 +16,7 @@ public class Facebooksignup {
 	
 	WebDriver driver = null;
 	
-	public void signupfacebook() {
+	public void signupfacebook() throws InterruptedException {
 		
 		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver();
@@ -47,8 +47,10 @@ public class Facebooksignup {
 		driver.findElement(By.xpath("//input[@value='2']")).click();
 		driver.findElement(By.xpath("(//button[text()='Sign Up'])[1]")).click();
 		
-		String actual=driver.findElement(By.xpath("//div[@class='x11i5rnm xat24cr x1mh8g0r x1vvkbs xtlvy1s']")).getText();
-		String Excepted="Complete these steps in the next 180 days to make sure that you can use this account.";
+		
+		WebElement el=driver.findElement(By.xpath("//span//div[@class='xdj266r x11i5rnm xat24cr x1mh8g0r x1vvkbs']"));
+	    String actual=el.getText();
+		String Excepted="We'll take you through a few steps to confirm your account on Facebook.";
 		
 		
 		if(Excepted.equalsIgnoreCase(actual)) {
@@ -62,9 +64,9 @@ public class Facebooksignup {
 			System.out.println("sign up failure");
 		}
 		
-	
+	driver.close();
 	}
-	
+
 	
 	public  static void select(WebElement ele, String value) {
 		Select list=new Select(ele);
@@ -79,7 +81,7 @@ public class Facebooksignup {
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		 Facebooksignup s=new  Facebooksignup();
 		 s.signupfacebook();
 		
