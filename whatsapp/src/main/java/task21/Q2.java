@@ -17,7 +17,7 @@ public class Q2 {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String Excepted="New Window";
+		
 		String parentwindow=null;
 		String Childwindow=null;
 		WebDriverManager.chromedriver().setup();
@@ -47,6 +47,7 @@ public class Q2 {
 		
 		//verification for new window twxt present in the page	
 		  driver.switchTo().window(Childwindow1);
+		  String Excepted="New Window";
 		  String Actual=driver.findElement(By.xpath("//h3[normalize-space()='New Window']")).getText();
 		
 			if( Excepted.equalsIgnoreCase(Actual)) {

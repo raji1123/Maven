@@ -28,8 +28,7 @@ public class Q1Windowsandframes {
 		Thread.sleep(2000);
 		String actual=driver.findElement(By.xpath("//body//p")).getText();
 		
-		//WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-		//wait.until(ExpectedConditions.alertIsPresent());
+		
 		
 		System.out.println(actual);
 		String expected="Hello People";
