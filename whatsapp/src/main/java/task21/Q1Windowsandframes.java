@@ -16,7 +16,7 @@ public class Q1Windowsandframes {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		WebDriverManager.chromedriver().setup();
+		
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
